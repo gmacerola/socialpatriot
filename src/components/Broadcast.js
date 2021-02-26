@@ -12,6 +12,8 @@ const styles = {
   card: {
     display: "flex",
     marginBottom: 20,
+    border: "3px solid #0d47a1",
+    borderRadius: 25,
   },
   image: {
     minWidth: 200,
@@ -39,7 +41,7 @@ class Broadcast extends Component {
       },
     } = this.props;
     return (
-      <Card className={classes.card}>
+      <Card elevation={10} className={classes.card}>
         <CardMedia
           image={userImage}
           title="Profile image"
