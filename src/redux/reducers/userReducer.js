@@ -3,6 +3,8 @@ import {
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   LOADING_USER,
+  ROGER_BROADCAST,
+  UNROGER_BROADCAST,
 } from "../types";
 
 const initialState = {
@@ -33,6 +35,24 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
+      };
+    case ROGER_BROADCAST:
+      return {
+        ...state,
+        rogers: [
+          ...state.rogers,
+          {
+            userHandle: state.credentials.handle,
+            broadcastId: action.payload.broadcastId,
+          },
+        ],
+      };
+    case UNROGER_BROADCAST:
+      return {
+        ...state,
+        rogers: state.rogers.filter(
+          (roger) => roger.broadcastId !== action.payload.broadcastId
+        ),
       };
     default:
       return state;

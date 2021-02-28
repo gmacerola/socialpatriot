@@ -1,29 +1,22 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
 
 import Broadcast from "../components/Broadcast";
 import Profile from "../components/Profile";
 
-class home extends Component {
-  state = {
-    broadcasts: null,
-  };
+import { connect } from "react-redux";
+import { getBroadcasts } from "../redux/actions/dataActions";
 
+class home extends Component {
   componentDidMount() {
-    axios
-      .get("/broadcasts")
-      .then((res) => {
-        this.setState({
-          broadcasts: res.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    this.props.getBroadcasts();
   }
 
   render() {
-    let recentBroadcastsMarkup = this.state.broadcasts ? (
-      this.state.broadcasts.map((broadcast) => (
+    const { broadcasts, loading } = this.props.data;
+    let recentBroadcastsMarkup = !loading ? (
+      broadcasts.map((broadcast) => (
         <Broadcast key={broadcast.broadcastId} broadcast={broadcast} />
       ))
     ) : (
@@ -42,4 +35,13 @@ class home extends Component {
   }
 }
 
-export default home;
+home.propTypes = {
+  getBroadcasts: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+export default connect(mapStateToProps, { getBroadcasts })(home);
