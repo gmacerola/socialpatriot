@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 
-import Broadcast from "../components/Broadcast";
-import Profile from "../components/Profile";
+import Broadcast from "../components/broadcast/Broadcast";
+import Profile from "../components/profile/Profile";
 
 import { connect } from "react-redux";
 import { getBroadcasts } from "../redux/actions/dataActions";

@@ -6,6 +6,7 @@ import {
   DELETE_BROADCAST,
   POST_BROADCAST,
   SET_BROADCAST,
+  SUBMIT_SOUNDOFF,
 } from "../types";
 
 const initialState = {
@@ -57,6 +58,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         broadcasts: [action.payload, ...state.broadcasts],
+      };
+    case SUBMIT_SOUNDOFF:
+      return {
+        ...state,
+        broadcast: {
+          ...state.broadcast,
+          soundoffs: [action.payload, ...state.broadcast.soundoffs],
+        },
       };
     default:
       return state;

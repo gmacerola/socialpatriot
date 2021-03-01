@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
 
 const styles = (theme) => ({
   paper: {

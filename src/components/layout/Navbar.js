@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
-import PostBroadcast from "./PostBroadcast";
+import MyButton from "../../util/MyButton";
+import PostBroadcast from "../broadcast/PostBroadcast";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";

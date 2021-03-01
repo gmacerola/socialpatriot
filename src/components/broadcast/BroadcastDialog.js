@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import dayjs from "dayjs";
+import RogerButton from "./RogerButton";
+import SoundOffs from "./SoundOffs";
+import SoundOffForm from "./SoundOffForm";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
@@ -15,15 +18,10 @@ import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
 
 import { connect } from "react-redux";
-import { getBroadcast } from "../redux/actions/dataActions";
-import RogerButton from "./RogerButton";
+import { getBroadcast, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
-  invisibleSeparator: {
-    border: "none",
-    margin: 4,
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -64,6 +62,7 @@ class BroadcastDialog extends Component {
     this.setState({
       open: false,
     });
+    this.props.clearErrors();
   };
 
   render() {
@@ -77,6 +76,7 @@ class BroadcastDialog extends Component {
         soundOffCount,
         userImage,
         userHandle,
+        soundoffs,
       },
       UI: { loading },
     } = this.props;
@@ -112,6 +112,9 @@ class BroadcastDialog extends Component {
           </MyButton>
           <span>{soundOffCount} Soundoffs</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <SoundOffForm broadcastId={broadcastId} />
+        <SoundOffs broadcastId={broadcastId} soundoffs={soundoffs} />
       </Grid>
     );
     return (
@@ -151,6 +154,7 @@ BroadcastDialog.propTypes = {
   userHandle: PropTypes.string.isRequired,
   broadcast: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
+  clearErrors: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -160,6 +164,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   getBroadcast,
+  clearErrors,
 };
 
 export default connect(

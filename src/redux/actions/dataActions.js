@@ -10,6 +10,7 @@ import {
   LOADING_UI,
   SET_BROADCAST,
   STOP_LOADING_UI,
+  SUBMIT_SOUNDOFF,
 } from "../types";
 import axios from "axios";
 
@@ -57,7 +58,7 @@ export const postBroadcast = (newBroadcast) => (dispatch) => {
         type: POST_BROADCAST,
         payload: res.data,
       });
-      dispatch({ type: CLEAR_ERRORS });
+      dispatch(clearErrors());
     })
     .catch((err) => {
       dispatch({
@@ -91,6 +92,25 @@ export const unRogerBroadcast = (broadcastId) => (dispatch) => {
       });
     })
     .catch((err) => console.log(err));
+};
+
+// Submit a soundoff
+export const submitSoundOff = (broadcastId, soundOffData) => (dispatch) => {
+  axios
+    .post(`/broadcast/${broadcastId}/soundoff`, soundOffData)
+    .then((res) => {
+      dispatch({
+        type: SUBMIT_SOUNDOFF,
+        payload: res.data,
+      });
+      dispatch(clearErrors());
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
+      });
+    });
 };
 
 // Delete a broadcast
