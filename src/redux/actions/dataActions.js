@@ -8,6 +8,8 @@ import {
   CLEAR_ERRORS,
   POST_BROADCAST,
   LOADING_UI,
+  SET_BROADCAST,
+  STOP_LOADING_UI,
 } from "../types";
 import axios from "axios";
 
@@ -28,6 +30,21 @@ export const getBroadcasts = () => (dispatch) => {
         payload: [],
       });
     });
+};
+
+// Get a broadcast
+export const getBroadcast = (broadcastId) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .get(`/broadcast/${broadcastId}`)
+    .then((res) => {
+      dispatch({
+        type: SET_BROADCAST,
+        payload: res.data,
+      });
+      dispatch({ type: STOP_LOADING_UI });
+    })
+    .catch((err) => console.log(err));
 };
 
 // Post a broadcast

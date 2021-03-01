@@ -5,6 +5,7 @@ import {
   UNROGER_BROADCAST,
   DELETE_BROADCAST,
   POST_BROADCAST,
+  SET_BROADCAST,
 } from "../types";
 
 const initialState = {
@@ -27,12 +28,20 @@ export default function (state = initialState, action) {
         broadcasts: action.payload,
         loading: false,
       };
+    case SET_BROADCAST:
+      return {
+        ...state,
+        broadcast: action.payload,
+      };
     case ROGER_BROADCAST:
     case UNROGER_BROADCAST:
       let index = state.broadcasts.findIndex(
         (broadcast) => broadcast.broadcastId === action.payload.broadcastId
       );
       state.broadcasts[index] = action.payload;
+      if (state.broadcast.broadcastId === action.payload.broadcastId) {
+        state.broadcast = action.payload;
+      }
       return {
         ...state,
       };
