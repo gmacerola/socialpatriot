@@ -4,6 +4,10 @@ import {
   ROGER_BROADCAST,
   UNROGER_BROADCAST,
   DELETE_BROADCAST,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  POST_BROADCAST,
+  LOADING_UI,
 } from "../types";
 import axios from "axios";
 
@@ -22,6 +26,26 @@ export const getBroadcasts = () => (dispatch) => {
       dispatch({
         type: SET_BROADCASTS,
         payload: [],
+      });
+    });
+};
+
+// Post a broadcast
+export const postBroadcast = (newBroadcast) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/broadcast", newBroadcast)
+    .then((res) => {
+      dispatch({
+        type: POST_BROADCAST,
+        payload: res.data,
+      });
+      dispatch({ type: CLEAR_ERRORS });
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
       });
     });
 };
@@ -52,6 +76,7 @@ export const unRogerBroadcast = (broadcastId) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+// Delete a broadcast
 export const deleteBroadcast = (broadcastId) => (dispatch) => {
   axios
     .delete(`/broadcast/${broadcastId}`)
@@ -59,4 +84,8 @@ export const deleteBroadcast = (broadcastId) => (dispatch) => {
       dispatch({ type: DELETE_BROADCAST, payload: broadcastId });
     })
     .catch((err) => console.log(err));
+};
+
+export const clearErrors = () => (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

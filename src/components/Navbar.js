@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
+import PostBroadcast from "./PostBroadcast";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import Bulletins from "@material-ui/icons/Notifications";
 
@@ -21,9 +21,7 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <MyButton tip="Create a broadcast">
-                <AddIcon />
-              </MyButton>
+              <PostBroadcast />
               <Link to="/">
                 <MyButton tip="Home">
                   <HomeIcon />

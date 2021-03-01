@@ -4,6 +4,7 @@ import {
   ROGER_BROADCAST,
   UNROGER_BROADCAST,
   DELETE_BROADCAST,
+  POST_BROADCAST,
 } from "../types";
 
 const initialState = {
@@ -42,6 +43,11 @@ export default function (state = initialState, action) {
       state.broadcasts.splice(indexDelete, 1);
       return {
         ...state,
+      };
+    case POST_BROADCAST:
+      return {
+        ...state,
+        broadcasts: [action.payload, ...state.broadcasts],
       };
     default:
       return state;
