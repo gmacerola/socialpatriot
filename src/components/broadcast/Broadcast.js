@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import PropTypes from "prop-types";
@@ -8,6 +7,7 @@ import DeleteBroadcast from "./DeleteBroadcast";
 import BroadcastDialog from "./BroadcastDialog";
 import RogerButton from "./RogerButton";
 
+import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -86,7 +86,11 @@ class Broadcast extends Component {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{soundOffCount} Soundoffs</span>
-          <BroadcastDialog broadcastId={broadcastId} userHandle={userHandle} />
+          <BroadcastDialog
+            broadcastId={broadcastId}
+            userHandle={userHandle}
+            openDialog={this.props.openDialog}
+          />
         </CardContent>
       </Card>
     );
@@ -97,6 +101,7 @@ Broadcast.propTypes = {
   user: PropTypes.object.isRequired,
   broadcast: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

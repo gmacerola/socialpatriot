@@ -49,16 +49,37 @@ const styles = (theme) => ({
 class BroadcastDialog extends Component {
   state = {
     open: false,
+    oldPath: "",
+    newPath: "",
   };
 
+  componentDidMount() {
+    if (this.props.openDialog) {
+      this.handleOpen();
+    }
+  }
+
   handleOpen = () => {
+    let oldPath = window.location.pathname;
+
+    const { userHandle, broadcastId } = this.props;
+    const newPath = `/users/${userHandle}/broadcast/${broadcastId}`;
+
+    if (oldPath === newPath) oldPath = `/users/${userHandle}`;
+
+    window.history.pushState(null, null, newPath);
+
     this.setState({
       open: true,
+      oldPath,
+      newPath,
     });
     this.props.getBroadcast(this.props.broadcastId);
   };
 
   handleClose = () => {
+    window.history.pushState(null, null, this.state.oldPath);
+
     this.setState({
       open: false,
     });
@@ -86,7 +107,7 @@ class BroadcastDialog extends Component {
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
+      <Grid container spacing={10}>
         <Grid item sm={5}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>

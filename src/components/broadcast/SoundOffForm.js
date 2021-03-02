@@ -47,7 +47,7 @@ class SoundOffForm extends Component {
     const { classes, authenticated } = this.props;
     // const { errors } = this.state.errors;
     const soundOffFormMarkup = authenticated ? (
-      <Grid item sm={10} style={{ textAlign: "center" }}>
+      <Grid item sm={12} style={{ textAlign: "center", paddingBottom: "20px" }}>
         <form onSubmit={this.handleSubmit}>
           <TextField
             name="body"

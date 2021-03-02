@@ -14,9 +14,14 @@ const styles = (theme) => ({
     height: 100,
     objectFit: "cover",
     borderRadius: "50%",
+    // padding: 30,
   },
   soundOffData: {
     marginLeft: 20,
+  },
+  soundOffContainer: {
+    paddingLeft: 40,
+    paddingRight: 40,
   },
 });
 
@@ -24,21 +29,21 @@ class SoundOffs extends Component {
   render() {
     const { soundoffs, classes } = this.props;
     return (
-      <Grid container>
+      <Grid container className={classes.soundOffContainer}>
         {soundoffs.map((soundoff, index) => {
           const { body, createdAt, userImage, userHandle } = soundoff;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={10}>
+              <Grid item sm={12}>
                 <Grid container>
-                  <Grid item sm={2}>
+                  <Grid item sm={3}>
                     <img
                       src={userImage}
                       alt="soundoff"
                       className={classes.soundOffImage}
                     />
                   </Grid>
-                  <Grid item sm={9}>
+                  <Grid item sm={4}>
                     <div className={classes.soundOffData}>
                       <Typography
                         variant="h5"

@@ -5,6 +5,7 @@ import {
   LOADING_USER,
   ROGER_BROADCAST,
   UNROGER_BROADCAST,
+  MARK_BULLETINS_READ,
 } from "../types";
 
 const initialState = {
@@ -53,6 +54,11 @@ export default function (state = initialState, action) {
         rogers: state.rogers.filter(
           (roger) => roger.broadcastId !== action.payload.broadcastId
         ),
+      };
+    case MARK_BULLETINS_READ:
+      state.bulletins.forEach((not) => (not.read = true));
+      return {
+        ...state,
       };
     default:
       return state;
