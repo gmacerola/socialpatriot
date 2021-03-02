@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Broadcast from "../components/broadcast/Broadcast";
 import StaticProfile from "../components/profile/StaticProfile";
+import BroadcastSkeleton from "../util/BroadcastSkeleton";
+import ProfileSkeleton from "../util/ProfileSkeleton";
 
 import Grid from "@material-ui/core/Grid";
 
@@ -36,7 +38,7 @@ class user extends Component {
     const { broadcastIdParam } = this.state;
 
     const broadcastsMarkup = loading ? (
-      <p>Loading data...</p>
+      <BroadcastSkeleton />
     ) : broadcasts === null ? (
       <p>No broadcasts from this user</p>
     ) : !broadcastIdParam ? (
@@ -67,7 +69,7 @@ class user extends Component {
         </Grid>
         <Grid item sm={4} xs={10}>
           {this.state.profile === null ? (
-            <p>Loading profile...</p>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

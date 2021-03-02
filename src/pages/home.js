@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import Broadcast from "../components/broadcast/Broadcast";
 import Profile from "../components/profile/Profile";
+import BroadcastSkeleton from "../util/BroadcastSkeleton";
 
 import { connect } from "react-redux";
 import { getBroadcasts } from "../redux/actions/dataActions";
@@ -20,7 +21,7 @@ class home extends Component {
         <Broadcast key={broadcast.broadcastId} broadcast={broadcast} />
       ))
     ) : (
-      <p>Loading...</p>
+      <BroadcastSkeleton />
     );
     return (
       <Grid container spacing={2}>
