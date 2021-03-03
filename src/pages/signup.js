@@ -29,9 +29,24 @@ class signup extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({ errors: nextProps.UI.errors });
+  static getDerivedStateFromProps(props) {
+    if (props.UI.errors) {
+      return {
+        errors: props.UI.errors,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.UI.errors !== this.props.UI.errors && !this.props.UI.errors) {
+      this.setState({
+        email: "",
+        password: "",
+        confirmPassword: "",
+        handle: "",
+        errors: {},
+      });
     }
   }
 

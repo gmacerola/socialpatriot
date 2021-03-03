@@ -19,14 +19,19 @@ class SoundOffForm extends Component {
     errors: {},
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors,
-      });
+  static getDerivedStateFromProps(props) {
+    if (props.UI.errors) {
+      return {
+        errors: props.UI.errors,
+      };
     }
-    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.UI.errors !== this.props.UI.errors && !this.props.UI.errors) {
       this.setState({
+        errors: {},
         body: "",
       });
     }
@@ -45,7 +50,7 @@ class SoundOffForm extends Component {
 
   render() {
     const { classes, authenticated } = this.props;
-    // const { errors } = this.state.errors;
+    const { errors } = this.state;
     const soundOffFormMarkup = authenticated ? (
       <Grid item sm={12} style={{ textAlign: "center", paddingBottom: "20px" }}>
         <form onSubmit={this.handleSubmit}>
@@ -53,8 +58,8 @@ class SoundOffForm extends Component {
             name="body"
             type="text"
             label="Soundoff on broadcast"
-            // error={errors.soundoffs ? true : false}
-            // helperText={errors.soundoffs}
+            error={errors ? true : false}
+            helperText={errors.comment}
             value={this.state.body}
             onChange={this.handleChange}
             fullWidth

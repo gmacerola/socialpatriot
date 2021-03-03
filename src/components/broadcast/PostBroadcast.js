@@ -39,14 +39,22 @@ class PostBroadcast extends Component {
     errors: {},
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors,
-      });
+  static getDerivedStateFromProps(props) {
+    if (props.UI.errors) {
+      return {
+        errors: props.UI.errors,
+      };
     }
-    if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      this.setState({ body: "", open: false, errors: {} });
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.UI.errors !== this.props.UI.errors && !this.props.UI.errors) {
+      this.setState({
+        errors: {},
+        open: false,
+        body: "",
+      });
     }
   }
 
@@ -107,7 +115,7 @@ class PostBroadcast extends Component {
                 multiline
                 rows="3"
                 placeholder="Broadcast to the world"
-                error={errors.body ? true : false}
+                error={errors ? true : false}
                 helperText={errors.body}
                 className={classes.textField}
                 onChange={this.handleChange}
