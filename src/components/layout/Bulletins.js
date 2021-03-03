@@ -11,9 +11,9 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
 
-import BulletinsIcon from "@material-ui/icons/Notifications";
+import BulletinsIcon from "@material-ui/icons/OfflineBolt";
 import StarIcon from "@material-ui/icons/Star";
-import ChatIcon from "@material-ui/icons/Chat";
+import SoundoffIcon from "@material-ui/icons/RecordVoiceOver";
 
 import { connect } from "react-redux";
 import { markBulletinsRead } from "../../redux/actions/userActions";
@@ -76,7 +76,7 @@ class Bulletins extends Component {
             not.type === "roger" ? (
               <StarIcon color={iconColor} style={{ marginRight: 10 }} />
             ) : (
-              <ChatIcon color={iconColor} style={{ marginRight: 10 }} />
+              <SoundoffIcon color={iconColor} style={{ marginRight: 10 }} />
             );
 
           return (

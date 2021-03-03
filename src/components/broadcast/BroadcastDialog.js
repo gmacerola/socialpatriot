@@ -15,7 +15,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
-import ChatIcon from "@material-ui/icons/Chat";
+import SoundoffIcon from "@material-ui/icons/RecordVoiceOver";
 
 import { connect } from "react-redux";
 import { getBroadcast, clearErrors } from "../../redux/actions/dataActions";
@@ -129,7 +129,7 @@ class BroadcastDialog extends Component {
           <RogerButton broadcastId={broadcastId} />
           <span>{rogerCount} rogers</span>
           <MyButton tip="soundoffs">
-            <ChatIcon color="primary" />
+            <SoundoffIcon color="primary" />
           </MyButton>
           <span>{soundOffCount} Soundoffs</span>
         </Grid>

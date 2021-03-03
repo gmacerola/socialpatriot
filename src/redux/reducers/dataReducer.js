@@ -60,10 +60,16 @@ export default function (state = initialState, action) {
         broadcasts: [action.payload, ...state.broadcasts],
       };
     case SUBMIT_SOUNDOFF:
+      let indexSoundoff = state.broadcasts.findIndex(
+        (broadcast) => broadcast.broadcastId === action.payload.broadcastId
+      );
+      state.broadcasts[indexSoundoff].soundOffCount =
+        state.broadcasts[indexSoundoff].soundOffCount + 1;
       return {
         ...state,
         broadcast: {
           ...state.broadcast,
+          soundOffCount: state.broadcast.soundOffCount + 1,
           soundoffs: [action.payload, ...state.broadcast.soundoffs],
         },
       };

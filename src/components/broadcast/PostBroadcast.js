@@ -9,7 +9,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import AddIcon from "@material-ui/icons/Add";
+import MicIcon from "@material-ui/icons/Mic";
 import CloseIcon from "@material-ui/icons/Close";
 
 import { connect } from "react-redux";
@@ -56,6 +56,16 @@ class PostBroadcast extends Component {
         body: "",
       });
     }
+    if (
+      prevProps.UI.loading !== this.props.UI.loading &&
+      !this.props.UI.errors
+    ) {
+      this.setState({
+        errors: {},
+        open: false,
+        body: "",
+      });
+    }
   }
 
   handleOpen = () => {
@@ -90,7 +100,7 @@ class PostBroadcast extends Component {
     return (
       <Fragment>
         <MyButton tip="Post a Broadcast" onClick={this.handleOpen}>
-          <AddIcon />
+          <MicIcon />
         </MyButton>
         <Dialog
           open={this.state.open}

@@ -46,6 +46,9 @@ class SoundOffForm extends Component {
     this.props.submitSoundOff(this.props.broadcastId, {
       body: this.state.body,
     });
+    this.setState({
+      body: "",
+    });
   };
 
   render() {

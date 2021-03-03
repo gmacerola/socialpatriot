@@ -13,7 +13,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
-import ChatIcon from "@material-ui/icons/Chat";
+import SoundoffIcon from "@material-ui/icons/RecordVoiceOver";
 
 import { connect } from "react-redux";
 
@@ -27,6 +27,7 @@ const styles = {
   },
   image: {
     minWidth: 200,
+    maxHeight: 200,
   },
   content: {
     padding: 25,
@@ -83,7 +84,7 @@ class Broadcast extends Component {
           <RogerButton broadcastId={broadcastId} />
           <span>{rogerCount} Rogers</span>
           <MyButton tip="soundoffs">
-            <ChatIcon color="primary" />
+            <SoundoffIcon color="primary" />
           </MyButton>
           <span>{soundOffCount} Soundoffs</span>
           <BroadcastDialog

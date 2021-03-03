@@ -43,7 +43,7 @@ class SoundOffs extends Component {
                       className={classes.soundOffImage}
                     />
                   </Grid>
-                  <Grid item sm={4}>
+                  <Grid item sm={9}>
                     <div className={classes.soundOffData}>
                       <Typography
                         variant="h5"
