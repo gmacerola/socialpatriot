@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/gmacerola/socialpatriot-client/static/css/main.469672c7.chunk.css",
+    "main.js": "/gmacerola/socialpatriot-client/static/js/main.e8d65e6e.chunk.js",
+    "main.js.map": "/gmacerola/socialpatriot-client/static/js/main.e8d65e6e.chunk.js.map",
+    "runtime-main.js": "/gmacerola/socialpatriot-client/static/js/runtime-main.47364a68.js",
+    "runtime-main.js.map": "/gmacerola/socialpatriot-client/static/js/runtime-main.47364a68.js.map",
+    "static/js/2.0d29f9dd.chunk.js": "/gmacerola/socialpatriot-client/static/js/2.0d29f9dd.chunk.js",
+    "static/js/2.0d29f9dd.chunk.js.map": "/gmacerola/socialpatriot-client/static/js/2.0d29f9dd.chunk.js.map",
+    "index.html": "/gmacerola/socialpatriot-client/index.html",
+    "static/css/main.469672c7.chunk.css.map": "/gmacerola/socialpatriot-client/static/css/main.469672c7.chunk.css.map",
+    "static/js/2.0d29f9dd.chunk.js.LICENSE.txt": "/gmacerola/socialpatriot-client/static/js/2.0d29f9dd.chunk.js.LICENSE.txt",
+    "static/media/icon.ee1cb589.png": "/gmacerola/socialpatriot-client/static/media/icon.ee1cb589.png",
+    "static/media/no-img.2fda6558.png": "/gmacerola/socialpatriot-client/static/media/no-img.2fda6558.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47364a68.js",
+    "static/js/2.0d29f9dd.chunk.js",
+    "static/css/main.469672c7.chunk.css",
+    "static/js/main.e8d65e6e.chunk.js"
+  ]
+}
