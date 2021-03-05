@@ -23,11 +23,18 @@ const styles = {
     display: "flex",
     marginBottom: 20,
     border: "3px solid #0d47a1",
-    borderRadius: 25,
+    borderRadius: 25, // eslint-disable-next-line
+    ["@media (max-width:960px)"]: {
+      flexDirection: "column",
+    },
   },
   image: {
     minWidth: 200,
-    maxHeight: 200,
+    maxHeight: 200, // eslint-disable-next-line
+    ["@media (max-width:960px)"]: {
+      backgroundSize: "contain",
+      minHeight: "200px",
+    },
   },
   content: {
     padding: 25,
